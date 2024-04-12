@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+        div {
+            background-color: rgb(120, 244, 178);
+            width: 200px;
+            height: 1.1em;
+            text-align: center;
+            border: 2px solid rgb(16, 192, 98);
+            margin: 3px;
+            font-size: 14px;
+        }
+
+        .blck{
+            margin-top: 10px;
+            margin-left: 65px;
+        }
+
+        #panel {
+            width: 84.5%;
+            padding: 5px;
+            margin: auto;
+            text-align: center;
+            background-color: #aee8f8;
+            border: solid 1px #6bd7f5;
+        }
+        
+        #flip {
+            margin: auto;
+            width: 90%;
+            height: 40px;
+            font-size: large;
+            padding: 5px;
+            text-align: center;
+            background-color: #aee8f8;
+            border: solid 1px #6bd7f5;
+        }
+
+        #panel {
+            padding: 40px;
+            display: none;
+        }
+
+        button {
+            font-size: 18px;
+        }
+
+        #go1 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(120, 244, 178);
+            border: 2px solid rgb(16, 192, 98);
+        }
+
+        #go2 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(120, 244, 178);
+            border: 2px solid rgb(16, 192, 98);
+        }
+
+        #go3 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(120, 244, 178);
+            border: 2px solid rgb(16, 192, 98);
+        }
+
+        #go4 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(120, 244, 178);
+            border: 2px solid rgb(16, 192, 98);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+
+<body>
+
+    <div id="flip">Click to slide the panel down or up</div>
+    <div id="panel">
+        <button id="go1">Animate Block1 &raquo;</button>
+        <button id="go2">Animate Block2 &raquo;</button>
+        <button id="go3">Animate Both &raquo;</button>
+        <button id="go4">Reset &raquo;</button>
+    </div>
+
+
+    <div id="block1" class="blck">Block1</div>
+    <div id="block2" class="blck">Block2</div>
+
+    <script>
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideToggle("slow");
+            });
+        });
+        $("#go1").on("click", function () {
+            $("#block1")
+                .animate({
+                    width: "90%"
+                }, {
+                    queue: false,
+                    duration: 3000
+                })
+                .animate({ fontSize: "24px" }, 1500)
+                .animate({ borderRightWidth: "15px" }, 1500);
+        });
+
+        $("#go2").on("click", function () {
+            $("#block2")
+                .animate({ width: "90%" }, 1000)
+                .animate({ fontSize: "24px" }, 1000)
+                .animate({ borderLeftWidth: "15px" }, 1000);
+        });
+
+        $("#go3").on("click", function () {
+            $("#go1").add("#go2").trigger("click");
+        });
+
+        $("#go4").on("click", function () {
+            $("div").css({
+                width: "",
+                fontSize: "",
+                borderWidth: ""
+            });
+        });
+    </script>
+
+</body>
+
+</html>
