@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+        div {
+            background-color: rgb(120, 244, 178);
+            width: 200px;
+            height: 1.1em;
+            text-align: center;
+            border: 2px solid rgb(16, 192, 98);
+            margin: 3px;
+            font-size: 14px;
+        }
+
+        button {
+            font-size: 18px;
+        }
+
+        #go1 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(142, 245, 231);
+        }
+
+        #go2 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(142, 245, 231);
+        }
+
+        #go3 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(142, 245, 231);
+        }
+
+        #go4 {
+            border-radius: 50px;
+            color: black;
+            background-color: rgb(142, 245, 231);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+
+<body>
+
+    <button id="go1">Animate Block1 &raquo;</button>
+    <button id="go2">Animate Block2 &raquo;</button>
+    <button id="go3">Animate Both &raquo;</button>
+    <button id="go4">Reset &raquo;</button>
+    <div id="block1">Block1</div>
+    <div id="block2">Block2</div>
+
+    <script>
+        $("#go1").on("click", function () {
+            $("#block1")
+                .animate({
+                    width: "90%"
+                }, {
+                    queue: false,
+                    duration: 3000
+                })
+                .animate({ fontSize: "24px" }, 1500)
+                .animate({ borderRightWidth: "15px" }, 1500);
+        });
+
+        $("#go2").on("click", function () {
+            $("#block2")
+                .animate({ width: "90%" }, 1000)
+                .animate({ fontSize: "24px" }, 1000)
+                .animate({ borderLeftWidth: "15px" }, 1000);
+        });
+
+        $("#go3").on("click", function () {
+            $("#go1").add("#go2").trigger("click");
+        });
+
+        $("#go4").on("click", function () {
+            $("div").css({
+                width: "",
+                fontSize: "",
+                borderWidth: ""
+            });
+        });
+    </script>
+
+</body>
+
+</html>
